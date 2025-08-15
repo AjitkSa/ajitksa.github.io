@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Ajit Kumar Sahoo | Java Developer, Team Lead & Technical Project Manager</title>
+  <title>Ajit Kumar Sahoo | AI, Python & Java Expert | Tech Leader</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800;400&display=swap');
@@ -17,21 +17,58 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
     }
+    /* AI-themed Animated Background (Neural Dots + Python/AI wave) */
+    .neural-bg {
+      position: fixed;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .neural-dot {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.18;
+      animation: dotMove 8s linear infinite;
+      background: radial-gradient(circle, #ffd452 0%, #ffb347 80%, transparent 100%);
+    }
+    .neural-dot.ai { background: radial-gradient(circle, #69eacb 0%, #bfe9ff 80%, transparent 100%); }
+    .neural-dot.py { background: radial-gradient(circle, #ff6e7f 0%, #ffd452 80%, transparent 100%); }
+    @keyframes dotMove {
+      from { transform: translateY(0); opacity: 0.18; }
+      50%  { opacity: 0.31; }
+      to   { transform: translateY(-60vh); opacity: 0.13; }
+    }
+    .wave {
+      position: absolute;
+      bottom: -18px; left: 0; width: 100vw;
+      height: 110px;
+      z-index: 1;
+      opacity: 0.17;
+      animation: waveAnim 12s linear infinite alternate;
+    }
+    @keyframes waveAnim {
+      to { transform: translateX(-30vw) scaleY(1.06);}
+    }
+
     .container {
-      max-width: 700px;
-      padding: 40px 30px;
+      max-width: 740px;
+      padding: 46px 36px 38px 36px;
       background: rgba(30, 34, 42, 0.92);
       border-radius: 28px;
       box-shadow: 0 8px 40px 0 rgba(0,0,0,0.45);
-      animation: fadeIn 1.5s cubic-bezier(.42,0,.58,1) both;
+      animation: fadeIn 1.6s cubic-bezier(.42,0,.58,1) both;
+      z-index: 2;
+      position: relative;
     }
     h1 {
-      font-size: 2.6rem;
+      font-size: 2.7rem;
       letter-spacing: 1px;
-      margin: 0 0 16px 0;
+      margin: 0 0 15px 0;
       text-align: center;
-      background: linear-gradient(90deg, #ffd452, #ffb347, #ff6e7f, #bfe9ff, #69eacb);
+      background: linear-gradient(90deg, #ffd452, #69eacb, #ff6e7f, #bfe9ff, #ffb347);
       background-size: 200% auto;
       color: #fff;
       background-clip: text;
@@ -44,16 +81,26 @@
     }
     .roles {
       text-align: center;
-      font-size: 1.2rem;
-      letter-spacing: 0.07em;
+      font-size: 1.23rem;
+      letter-spacing: 0.09em;
       margin-bottom: 25px;
       color: #ffd452;
       opacity: 0;
-      animation: fadeInUp 1s 0.7s forwards;
+      animation: fadeInUp 1s 0.6s forwards;
     }
     .highlight {
       color: #69eacb;
       font-weight: 700;
+    }
+    .ai-highlight {
+      color: #ff6e7f;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      background: linear-gradient(90deg,#ffb347,#69eacb,#ffd452);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding: 0 2px;
     }
     ul.skills {
       list-style: none;
@@ -62,33 +109,45 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 12px;
+      gap: 13px;
       opacity: 0;
-      animation: fadeInUp 1s 1.1s forwards;
+      animation: fadeInUp 1s 1.05s forwards;
     }
     ul.skills li {
-      background: rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.08);
       border-radius: 18px;
       padding: 8px 22px;
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: #fff;
       border: 1px solid #3c3f58;
-      transition: background 0.3s, color 0.3s;
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
     }
     ul.skills li:hover {
       background: #ffd452;
       color: #232526;
+      transform: scale(1.07) rotate(-2deg);
+      z-index: 1;
+    }
+    /* AI/Python Icons for skills */
+    ul.skills li[data-icon]:before {
+      content: attr(data-icon);
+      margin-right: 8px;
+      font-size: 1.13em;
+      vertical-align: -3px;
     }
     .section {
       margin-bottom: 16px;
       opacity: 0;
-      animation: fadeInUp 1s 1.6s forwards;
+      animation: fadeInUp 1s 1.5s forwards;
     }
     .section:last-child {
       margin-bottom: 0;
     }
     .section-title {
-      font-size: 1.15rem;
+      font-size: 1.17rem;
       color: #ffb347;
       margin-bottom: 4px;
       font-weight: 700;
@@ -111,6 +170,12 @@
       font-size: 0.97rem;
       color: #ffd452;
       font-weight: 500;
+      transition: background 0.3s, color 0.3s;
+      cursor: pointer;
+    }
+    .personal-attr span:hover {
+      background: #69eacb;
+      color: #232526;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(30px);}
@@ -120,57 +185,111 @@
       from { opacity: 0; transform: translateY(40px);}
       to { opacity: 1; transform: translateY(0);}
     }
+    /* Typing effect for AI/Python headline */
+    .typing {
+      display: inline-block;
+      border-right: 2px solid #ffd452;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 2.9s steps(25, end), blink-caret .7s step-end infinite;
+      font-weight: 800;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #ffd452; }
+    }
+    /* Responsive */
     @media (max-width: 600px) {
-      .container { padding: 20px 7px; }
-      h1 { font-size: 1.6rem;}
-      ul.skills li { font-size: .95rem; padding: 6px 10px;}
+      .container { padding: 17px 2px; }
+      h1 { font-size: 1.5rem;}
+      ul.skills li { font-size: .96rem; padding: 6px 9px;}
+      .section-title { font-size: 1.03rem;}
+      .wave { height: 60px; }
     }
   </style>
 </head>
 <body>
+  <div class="neural-bg" aria-hidden="true"></div>
+  <svg class="wave" aria-hidden="true" viewBox="0 0 1440 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,90 C320,130 550,20 800,70 C1050,120 1150,30 1440,90 L1440,130 L0,130 Z" fill="#69eacb"/>
+  </svg>
   <div class="container">
-    <h1>Ajit Kumar Sahu</h1>
+    <h1>
+      Ajit Kumar Sahoo
+      <br>
+      <span class="typing ai-highlight">AI, Python & Java Expert</span>
+    </h1>
     <div class="roles">
-      15+ years | <span class="highlight">Java Developer</span> | Team Lead | Technical Project Manager
+      15+ years | <span class="highlight">AI Solution Architect</span> | <span class="highlight">Python & Java Developer</span> | <span class="ai-highlight">Tech Leader</span> | Project Manager
     </div>
     <ul class="skills">
-      <li>Java &amp; J2EE</li>
-      <li>Spring Boot</li>
-      <li>Microservices</li>
-      <li>RESTful APIs</li>
-      <li>Angular &amp; React</li>
-      <li>DevOps</li>
-      <li>AWS &amp; Azure</li>
-      <li>MySQL &amp; MongoDB</li>
-      <li>Agile &amp; Scrum</li>
-      <li>Solution Architecture</li>
+      <li data-icon="🤖">Artificial Intelligence</li>
+      <li data-icon="🧠">Machine Learning</li>
+      <li data-icon="🔬">Data Science</li>
+      <li data-icon="🐍">Python</li>
+      <li data-icon="☕">Java &amp; J2EE</li>
+      <li data-icon="🌱">Spring Boot</li>
+      <li data-icon="🛠️">Microservices</li>
+      <li data-icon="🔗">RESTful APIs</li>
+      <li data-icon="⚛️">React &amp; Angular</li>
+      <li data-icon="☁️">AWS &amp; Azure</li>
+      <li data-icon="🐳">Docker &amp; DevOps</li>
+      <li data-icon="🛡️">Solution Architecture</li>
+      <li data-icon="🧩">Agile &amp; Scrum</li>
+      <li data-icon="🗄️">MySQL &amp; MongoDB</li>
+      <li data-icon="⚡">LLMs &amp; GenAI</li>
     </ul>
     <div class="section">
       <div class="section-title">About Me</div>
       <div class="section-content">
-        Experienced in the full software development lifecycle, I bring expertise in building scalable, secure, and high-availability systems.<br>
-        Proven leader and mentor, adept at delivering complex projects for enterprise clients across finance, healthcare, and e-commerce domains.
+        I design, build and lead <span class="ai-highlight">AI-driven, scalable software</span> solutions.<br>
+        Passionate about blending <span class="highlight">AI, Python</span> and <span class="highlight">cloud</span> technologies to solve enterprise challenges.<br>
+        Proven leader and mentor, delivering <b>innovative solutions</b> for finance, healthcare, and e-commerce.
       </div>
     </div>
     <div class="section">
       <div class="section-title">Career Highlights</div>
       <div class="section-content">
-        &#8226; Delivered 20+ enterprise-grade projects, consistently meeting deadlines and exceeding expectations.<br>
-        &#8226; Led teams up to 15 engineers, fostering innovation and technical excellence.<br>
-        &#8226; Transformed legacy systems using microservices and DevOps best practices.
+        &#8226; Architected <b>AI/ML</b> and <b>GenAI</b> powered platforms deployed on AWS/Azure.<br>
+        &#8226; Led teams up to 15 engineers, driving innovation and technical excellence.<br>
+        &#8226; Modernized legacy systems with microservices, DevOps, and data-driven approaches.<br>
+        &#8226; Delivered 20+ high-impact enterprise projects, from PoC to production.
       </div>
     </div>
     <div class="section">
       <div class="section-title">Personal Attributes</div>
       <div class="personal-attr">
+        <span>AI Evangelist</span>
         <span>Problem Solver</span>
+        <span>Continuous Learner</span>
         <span>Excellent Communicator</span>
         <span>Team Builder</span>
-        <span>Continuous Learner</span>
         <span>Adaptable</span>
         <span>Detail-Oriented</span>
+        <span>Innovation Driver</span>
       </div>
     </div>
   </div>
+  <script>
+    // Dynamically create animated neural dots for the background
+    function createNeuralDots() {
+      const bg = document.querySelector('.neural-bg');
+      const colors = ['ai', '', 'py'];
+      for (let i = 0; i < 26; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'neural-dot ' + colors[Math.floor(Math.random()*colors.length)];
+        dot.style.width = dot.style.height = (12 + Math.random()*26) + 'px';
+        dot.style.left = (Math.random()*98) + 'vw';
+        dot.style.top = (55 + Math.random()*40) + 'vh';
+        dot.style.animationDelay = (-Math.random()*8)+'s';
+        bg.appendChild(dot);
+      }
+    }
+    createNeuralDots();
+  </script>
 </body>
 </html>
